@@ -43,7 +43,7 @@ class Order(Base):
     id = Column(Integer, primary_key=True)
     quantity = Column(Integer)
     user_id = Column(Integer, ForeignKey('users.id'))
-    order_status = Column(ChoiceType(choices=ORDER_STATUS), default='pending')
+    order_status = Column(ChoiceType(choices=ORDER_STATUS), default='PENDING')
     flavour = Column(ChoiceType(choices=FLAVOURS_CHOICES))
     size = Column(ChoiceType(choices=SIZES_CHOICES))
 

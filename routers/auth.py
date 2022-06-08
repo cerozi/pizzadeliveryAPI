@@ -10,16 +10,6 @@ auth_router = APIRouter(
     tags = ['auth']
 )
 
-@auth_router.get('/test')
-def test(jwt: AuthJWT = Depends()):
-    try:
-        jwt.jwt_required()
-    except:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail='you must be logged to access this controller. ')
-
-    current_user = jwt.get_jwt_subject()
-    return {'logged_user': current_user}
-
 @auth_router.post('/signup')
 def index(request: schemas.UserBase, db: Session = Depends(get_db)):
     qs_username = db.query(models.User).filter(models.User.username == request.username).first()
@@ -52,3 +42,4 @@ def user_login(request: schemas.LoginSchema, jwt: AuthJWT = Depends(), db: Sessi
         return data
 
     raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail='username or password invalid. ')
+
