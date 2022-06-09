@@ -27,3 +27,27 @@ class OrderBase(BaseModel):
 
 class OrderStatus(BaseModel):
     order_status: str
+
+class FlavourBase(BaseModel):
+    code: str
+    value: str
+
+    class Config:
+        orm_mode = True
+
+class SizeBase(FlavourBase):
+    pass
+
+class OrderStatusRetrieve(FlavourBase):
+    pass
+
+class OrderRetrieve(BaseModel):
+    id: int
+    quantity: int
+    user_id: int
+    order_status: OrderStatusRetrieve
+    flavour: FlavourBase
+    size: SizeBase
+
+    class Config:
+        orm_mode = True

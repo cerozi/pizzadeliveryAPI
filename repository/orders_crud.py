@@ -1,4 +1,7 @@
-import schemas, models
+# project imports;
+import schemas, models, dependecies
+
+# built-in imports;
 from sqlalchemy.orm import Session
 from fastapi_jwt_auth import AuthJWT
 from fastapi import Response, status
@@ -38,3 +41,14 @@ def delete_order(id: int, db: Session):
     db.commit()
 
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+def get_user_orders(jwt: AuthJWT, db: Session):
+    current_user_username = jwt.get_jwt_subject()
+    user_qs = db.query(models.User).filter(models.User.username == current_user_username).first()
+    return db.query(models.Order).filter(models.Order.user_id == user_qs.id).all()
+
+def get_all_orders(jwt: AuthJWT, db: Session):
+    return db.query(models.Order).all()
+
+def get_order(db: Session, id: int):
+    return dependecies.validate_order_id(id, db)

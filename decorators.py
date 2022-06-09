@@ -1,12 +1,13 @@
 from functools import wraps
 import models
 from fastapi import HTTPException, status
+from dependecies import check_token
 
 
 def staff_required(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
-        jwt = kwargs['jwt']
+        jwt = check_token(jwt=kwargs['jwt'])
         db = kwargs['db']
 
         current_user = jwt.get_jwt_subject()
