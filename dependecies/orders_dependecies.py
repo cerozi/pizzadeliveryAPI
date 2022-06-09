@@ -7,15 +7,6 @@ import schemas, models
 from databases import get_db
 
 
-# checks if user is logged;
-def check_token(jwt: AuthJWT = Depends()):
-    try:
-        jwt.jwt_required()
-    except:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="only logged users can access this controller. ")
-
-    return jwt
-
 # checks if the order has a valid id;
 def validate_order_id(id: int, db: Session):
     order_qs = db.query(models.Order).filter(models.Order.id == id).first()

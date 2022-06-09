@@ -1,5 +1,5 @@
 # project imports;
-import schemas, models, dependecies
+import schemas, models, dependecies.orders_dependecies as orders_dependecies
 
 # built-in imports;
 from sqlalchemy.orm import Session
@@ -51,4 +51,4 @@ def get_all_orders(jwt: AuthJWT, db: Session):
     return db.query(models.Order).all()
 
 def get_order(db: Session, id: int):
-    return dependecies.validate_order_id(id, db)
+    return orders_dependecies.validate_order_id(id, db)

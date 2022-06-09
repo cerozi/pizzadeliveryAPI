@@ -1,7 +1,7 @@
 from functools import wraps
 import models
 from fastapi import HTTPException, status
-from dependecies import check_token
+from dependecies.auth_dependecies import check_token
 
 
 def staff_required(func):
