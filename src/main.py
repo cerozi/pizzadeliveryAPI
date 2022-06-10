@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from routers.auth import auth_router
 from routers.orders import order_router
 from databases import Base, engine
-from databases_test import test_engine
+from tests.databases_test import test_engine
 from fastapi_jwt_auth import AuthJWT
 from pydantic import BaseModel
 
