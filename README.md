@@ -1,9 +1,7 @@
 # Pizza Delivery API
-<hr>
 API made with FastAPI that manages a pizza delivery sistem.
 
 # Endpoints
-<hr>
 
 | METHOD	          |  ROUTE              | FUNCTIONALITY       | ACCESS              |
 | ------------------- | ------------------- | ------------------- | ------------------- |
@@ -20,13 +18,12 @@ API made with FastAPI that manages a pizza delivery sistem.
 
 
 # To run you need to..
-<hr>
-1. Install Docker on your system.
-2. Once you have Docker installed, clone this repo.
+* 1. Install Docker on your system.
+* 2. Once you have Docker installed, clone this repo.
 ```python
 git clone https://github.com/cerozi/pizzadeliveryAPI.git
 ```
-3. On the project root directory, opens the terminal and build the containers.
+* 3. On the project root directory, opens the terminal and build the containers.
 ```docker-compose up --build
 ```
-4. Now, you can access the API endpoints at http://0.0.0.0:8000/docs
+* 4. Now, you can access the API endpoints at http://0.0.0.0:8000/docs
